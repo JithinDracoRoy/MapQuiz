@@ -9,6 +9,24 @@
 //                 "Which is the Second biggest continent of the world?",
 //                 "Columbus found which continent?",
 //                 "Where is Amazon River?"];
+
+var x=0;
+function questions(){
+    document.getElementById('a').innerHTML("");
+    document.getElementById('b').innerHTML("");
+    document.getElementById('m').style.pointerEvents("auto")
+    document.getElementById('n').style.pointerEvents("none")
+    var randomNumber= Math.floor((Math.random() * 10) + 1); 
+
+ for(i=0;x<i;i++){
+   if(used[i]==randomNumber){
+   i=0;
+randomNumber=Math.floor((Math.random()*10)+1);
+ }
+}
+used.push(randomNumber)
+document.getElementById("q1").innerHTML=questions[randomnumber];
+}
 // let answers = ["Asia","Asia","Australia","Australia","Asia","Africa",
 //                 "Europe","Africa","North America","South America"];
 

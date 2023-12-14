@@ -36,6 +36,7 @@ document.getElementById("q1").innerHTML=questions[randomnumber];
 // let answers = ["Asia","Asia","Australia","Australia","Asia","Africa",
 //                 "Europe","Africa","North America","South America"];
 
+  } 
 function check(a){
     timing=localStorage.getItem("time");
     if(a==answers[randomnumber]){

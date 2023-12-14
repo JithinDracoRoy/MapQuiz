@@ -1,5 +1,9 @@
 body {
-    background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
+    background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
+    height: 700px;
+
+   
+
   }
   
   .card {
@@ -52,6 +56,9 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+
   }
 
   /* Style for the select tag */

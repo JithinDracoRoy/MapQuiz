@@ -52,6 +52,7 @@ function storeTotalQuestion(a){
 function storeDifficulty(a){
     localStorage.setItem("difficulty",a);
 }
+
 function askQuestion(){                                                 //function to add new question
     document.getElementById("correct").innerHTML="";                    // Clear the inner HTML content of elements with ids "correct" and "wrong"
     document.getElementById("wrong").innerHTML="";                      
@@ -64,6 +65,7 @@ function askQuestion(){                                                 //functi
             randomnumber=Math.floor(Math.random()*10);
         }
     }
+
     usedQuestionNumbers.push(randomnumber);                              // Add the newly generated question number to the usedQuestionNumbers array
     document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber]; // Set the inner HTML content of the element with id "questionDiv" to the new question
 }
@@ -94,4 +96,7 @@ function result(){
     else{
         document.getElementById("opps").innerHTML="Opps "+userName+" You scored below 50%";
     }
+
+}
+
 }

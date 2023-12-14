@@ -3,22 +3,20 @@ const questions = ["Which continent is India part of?",
                 "Which is the largest continent in The World?",
                 "Which is the smallest continent in area?",
                 "Which continent is also called as an 'Island-Continent'?",
+                "The largest mountain in the world, Mount Everest is situated in which continent?",
                 "The largest mountain in the world, Mount Everest is situated in which continent?"
 const questions = [[" Which continent is known as the 'land Down Under'?", 
                 "In which continent is the Sahara Desert located?",
                 "What is the largest continent by land area?",
                 "Where is the Amazon Rainforest located?",
                 "What is the world's smallest continent?",
-
                 "On Which Continent Is Egypt?",
                 "On which continent can you find France?",
                 "Which is the Second biggest continent of the world?",
                 "Columbus found which continent?",
-
                 "Where is Amazon River?"];
 const answers = ["Asia","Asia","Australia","Australia","Asia","Africa",
                 "Europe","Africa","North America","South America"];
-
                 "Where is Amazon River?"],
                 ["In which continent is the Amazon Rainforest located?",
                 "Where is the Sahara Desert situated?",
@@ -63,6 +61,9 @@ function storeTotalQuestion(a){
     localStorage.setItem("totalQuestions",a);
 }
 function askQuestion(){
+
+    document.getElementById("correct").innerHTML="";
+    document.getElementById("wrong").innerHTML="";
     document.getElementById("correct").innerHTML="";
     document.getElementById("wrong").innerHTML="";
 function storeDifficulty(a){
@@ -81,13 +82,16 @@ function askQuestion(){
             randomnumber=Math.floor(Math.random()*10);
         }
     }
+
     usedQuestionNumbers.push(randomnumber);
     document.getElementById("questionDiv").innerHTML=questions[randomnumber];
-}
-function check(answer){
-    noOfQuestions=localStorage.getItem("totalQuestions");
-    if(answer==answers[randomnumber]){
-    document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber];
+
+    // Creating Count Down    
+    let timerImg=document.createElement('img');
+    timerImg.src='assets/countdown.gif';
+    timerImg.width="10%";
+    document.getElementById("for_img").appendChild(timerImg);
+    setTimeout(timeOut, 10000); 
 }
 function check(answer){
     noOfQuestions=localStorage.getItem("totalQuestions");
@@ -106,23 +110,42 @@ function check(answer){
         result();
     }
 }
-function result(){
-    
-    noOfQuestions=localStorage.getItem("totalQuestions");
-    userName=localStorage.getItem("name");
-    document.getElementById("nextQuestion").style.pointerEvents = 'none';
-    if((score/noOfQuestions)>0.5){
-        document.getElementById("congrats").innerHTML="Congrats "+userName+" You scored above 50%";
+
+// FINAL RESULT
+let result=()=>{
+
+    document.getElementById("questionDiv").style.display="none";
+     document.getElementById("map").style.display="none";
+     document.getElementById("nextQuestion").style.display="none";
+     userName = localStorage.getItem("name");
+     noOfQuestions = localStorage.getItem("totalQuestions");
+     document.getElementById("nextQuestion").style.pointerEvents = 'none'; 
+     finalScore = (score/noOfQuestions)*100;
+
+//  Showing result in percentage
+    if( finalScore < 50 ){
+       document.getElementById("oops").innerHTML = userName + ", you have scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;       
     }
-    else{
-
-        document.getElementById("oopps").innerHTML="Opps "+userName+" You scored below 50%";
-        document.getElementById("oops").style.display="";
-
-
-
-
-        document.getElementById("opps").innerHTML="Opps "+userName+" You scored below 50%";
-
+    else if(finalScore < 70){
+        document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" + "GOOD JOB";       
     }
+    else if(finalScore < 80 ){
+        document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" +"GREAT JOB" ;    
+    }
+    else if( finalScore < 95 ){
+        document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + " %.\n" + "EXCELLENT JOB";    
+    }
+    else if( finalScore <= 100 ){
+        document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" + "AMAZING JOB";    
+    }
+} 
+
+
+let timeOut=()=>{
+    document.getElementById("wrong").innerHTML="Timeout! Please go the next question.";
+    document.getElementById("nextQuestion").style.pointerEvents = 'auto';
+    document.getElementById("map").style.pointerEvents = 'none';
+    document.getElementById("for_img").innerHTML='';
 }
+//Count Down
+          

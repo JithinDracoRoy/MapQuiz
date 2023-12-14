@@ -1,13 +1,6 @@
 body {
     background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
   }
-
-
-
-  .card-body{
-background: linear-gradient(to bottom, #2a484e,#377375,#A8D8CD,#ddefe3);
-  }
-
   
   .card {
     max-width: 1000px;
@@ -28,11 +21,7 @@ background: linear-gradient(to bottom, #2a484e,#377375,#A8D8CD,#ddefe3);
   
   .card-title {
     font-weight: bold;
-
-
-    color: white;
-  
-
+    color: #663399;
     font-size: 2rem;
   }
   
@@ -109,7 +98,6 @@ img[usemap] {
 img[usemap]:hover {
   border-color: #007bff;
 }
-
 #globe{
   width: 20%;
   margin-top: -50px;

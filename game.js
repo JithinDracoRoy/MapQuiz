@@ -1,12 +1,24 @@
+
+const questions = ["Which continent is India part of?", 
+                "Which is the largest continent in The World?",
+                "Which is the smallest continent in area?",
+                "Which continent is also called as an 'Island-Continent'?",
+                "The largest mountain in the world, Mount Everest is situated in which continent?"
 const questions = [[" Which continent is known as the 'land Down Under'?", 
                 "In which continent is the Sahara Desert located?",
                 "What is the largest continent by land area?",
                 "Where is the Amazon Rainforest located?",
                 "What is the world's smallest continent?",
+
                 "On Which Continent Is Egypt?",
                 "On which continent can you find France?",
                 "Which is the Second biggest continent of the world?",
                 "Columbus found which continent?",
+
+                "Where is Amazon River?"];
+const answers = ["Asia","Asia","Australia","Australia","Asia","Africa",
+                "Europe","Africa","North America","South America"];
+
                 "Where is Amazon River?"],
                 ["In which continent is the Amazon Rainforest located?",
                 "Where is the Sahara Desert situated?",
@@ -38,6 +50,7 @@ const answers = [["Australia","Africa","Asia","South America","Australia",
 var noOfQsAsked=0;
 var score=0
 var userName;
+
 var hardness;
 var noOfQuestions=1;
 var randomnumber;
@@ -49,6 +62,9 @@ function storeName(){
 function storeTotalQuestion(a){
     localStorage.setItem("totalQuestions",a);
 }
+function askQuestion(){
+    document.getElementById("correct").innerHTML="";
+    document.getElementById("wrong").innerHTML="";
 function storeDifficulty(a){
     localStorage.setItem("difficulty",a);
 }
@@ -66,6 +82,11 @@ function askQuestion(){
         }
     }
     usedQuestionNumbers.push(randomnumber);
+    document.getElementById("questionDiv").innerHTML=questions[randomnumber];
+}
+function check(answer){
+    noOfQuestions=localStorage.getItem("totalQuestions");
+    if(answer==answers[randomnumber]){
     document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber];
 }
 function check(answer){
@@ -86,6 +107,7 @@ function check(answer){
     }
 }
 function result(){
+    
     noOfQuestions=localStorage.getItem("totalQuestions");
     userName=localStorage.getItem("name");
     document.getElementById("nextQuestion").style.pointerEvents = 'none';
@@ -93,6 +115,14 @@ function result(){
         document.getElementById("congrats").innerHTML="Congrats "+userName+" You scored above 50%";
     }
     else{
+
+        document.getElementById("oopps").innerHTML="Opps "+userName+" You scored below 50%";
+        document.getElementById("oops").style.display="";
+
+
+
+
         document.getElementById("opps").innerHTML="Opps "+userName+" You scored below 50%";
+
     }
 }

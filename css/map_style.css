@@ -16,6 +16,7 @@ body {
   .card-text {
     font-size: 1.25rem;
   }
+
   
   .map-container {
     padding: 15px;
@@ -126,4 +127,8 @@ img[usemap] {
 
 img[usemap]:hover {
   border-color: #007bff;
+}
+
+.footer{
+  background-color: #663399;
 }

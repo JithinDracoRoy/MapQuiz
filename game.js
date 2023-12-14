@@ -52,21 +52,22 @@ function storeTotalQuestion(a){
 function storeDifficulty(a){
     localStorage.setItem("difficulty",a);
 }
-function askQuestion(){
-    document.getElementById("correct").innerHTML="";
-    document.getElementById("wrong").innerHTML="";
-    hardness=parseInt(localStorage.getItem("difficulty"));
-    document.getElementById("map").style.pointerEvents = 'auto';
+
+function askQuestion(){                                                 //function to add new question
+    document.getElementById("correct").innerHTML="";                    // Clear the inner HTML content of elements with ids "correct" and "wrong"
+    document.getElementById("wrong").innerHTML="";                      
+    document.getElementById("map").style.pointerEvents = 'auto';        // Enable pointer events for the map and disable for the nextQuestion button
     document.getElementById("nextQuestion").style.pointerEvents = 'none';
-    randomnumber=Math.floor(Math.random()*10);
-    for(i=0;i<noOfQsAsked;i++){
-        if(usedQuestionNumbers[i]==randomnumber){
+    randomnumber=Math.floor(Math.random()*10);                           // Generate a random number between 0 and 9
+    for(i=0;i<noOfQsAsked;i++){                                          // Loop to check if the randomly generated question number has been used before
+        if(usedQuestionNumbers[i]==randomnumber){                        // If the question number is used, reset the loop and generate a new random number
             i=0;
             randomnumber=Math.floor(Math.random()*10);
         }
     }
-    usedQuestionNumbers.push(randomnumber);
-    document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber];
+
+    usedQuestionNumbers.push(randomnumber);                              // Add the newly generated question number to the usedQuestionNumbers array
+    document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber]; // Set the inner HTML content of the element with id "questionDiv" to the new question
 }
 function check(answer){
     noOfQuestions=localStorage.getItem("totalQuestions");
@@ -95,4 +96,7 @@ function result(){
     else{
         document.getElementById("opps").innerHTML="Opps "+userName+" You scored below 50%";
     }
+
+}
+
 }

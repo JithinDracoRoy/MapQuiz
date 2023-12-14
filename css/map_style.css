@@ -1,0 +1,155 @@
+body {
+    background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
+  }
+  
+  .card {
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+    border: none;
+    margin-top: 20px;
+  }
+  
+  .card-title {
+    color:blueviolet !important;
+    font-size: 1.75rem;
+  }
+  
+  .card-text {
+    font-size: 1.25rem;
+  }
+  
+  .map-container {
+    padding: 15px;
+    background: #fff;
+    border-radius: 0.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .btn-primary {
+    font-weight: bold;
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+
+  img[usemap] {
+    border: none;
+    height: auto;
+    max-width: 100%;
+  }
+
+.card {
+    box-shadow: 0 10px 20px rgba(18, 38, 63, 0.1);
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.card-title {
+    color: #663399;
+    font-size: 2rem;
+}
+
+.map-container {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    font-weight: bold;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    border: 2px solid #0056b3;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+body {
+  background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
+}
+
+.card {
+  box-shadow: 0 10px 20px rgba(18, 38, 63, 0.1);
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.2);
+}
+
+.card-title {
+  color: #663399;
+  font-size: 2rem;
+}
+
+.map-container {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  font-weight: bold;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  border: 2px solid #0056b3;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+img[usemap] {
+  border: 5px solid #ffffff;
+  height: auto;
+  max-width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+img[usemap]:hover {
+  border-color: #007bff;
+}
+
+#firework-left{
+  width: 100px;
+  margin-top: -450px;
+  transition: width 2s, height 2s, transform 2s;
+
+}
+#firework-right{
+  margin-left: 500px;
+  margin-top: -450px;
+  width: 100px;
+  transition: width 2s, height 2s, transform 2s;
+}
+#firework-right:hover {
+  width: 200px;
+  height: 200px;
+  transform: rotate(360deg);
+}
+#firework-left:hover {
+  width: 200px;
+  height: 200px;
+  transform: rotate(360deg);
+}
+  
+
+

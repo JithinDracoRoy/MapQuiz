@@ -5,28 +5,61 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="/css/index_style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <title>World Map Game</title>
     <script src="game.js"></script>
 </head>
+<style>
+    @keyframes changeColor {
+        0% {
+            color: #2a484e;
+        }
+        25% {
+            color:#A8D8CD;
+        }
+        50% {
+            color: #2a484e;
+        }
+        75% {
+            color:#377375;
+        }
+        100% {
+            color: #2a484e;
+        }
+    }
 
-<body>
+    h1 {
+        font-size: 60px;
+        animation: changeColor 4s ease-in-out infinite;
+    }
+
+    
+
+</style>
+<body >
+
     <div class="container mt-5">
         <div class="card">
             <div class="card-header text-center">
-                Welcome to the World Map Game!
+                <h1><b> World Map Game</b></h1>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Instructions</h5>
-                <ul class="list-group list-group-flush mb-4">
-                    <li class="list-group-item">Enter your name</li>
-                    <li class="list-group-item">Enter the number of questions you would like to answer</li>
-                    <li class="list-group-item">For answering, click on the continent you think is the answer</li>
-                    <li class="list-group-item">At the end of the quiz, you will get your result - pass/fail</li>
+                <h5 style="color: #ddefe3;"    class="card-title">Instructions</h5>
+                <div class="row" >
+                <ul   class="list-group list-group-flush mb-4 col">
+                    <li   style="background-color: #377375; color: white;" class="list-group-item"><b>Enter your name</b></li>
+                    <li  style="background-color: #377375; color: white;" class="list-group-item"><b>Enter the number of questions you would like to answer</b></li>
+                    <li   style="background-color: #377375; color: white;"   class="list-group-item"><b>For answering, click on the continent you think is the answer</b></li>
+                    <li  style="background-color: #377375; color: white;" class="list-group-item"><b>At the end of the quiz, you will get your result - pass/fail</b></li>
                 </ul>
+                <!-- <ul class="list-group list-group-flush mb-4 col">
+                    <li class="list-group-item">Make Sure</li>
+                    <li class="list-group-item">To find</li>
+                </ul> -->
+                </div>
 
                 <div class="prompt-box">
                     <div class="container my-5">
@@ -37,7 +70,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="number" class="form-label">Questions:</label>
-                                <select id="number" onchange="times(this.value)" >
+                                <select id="number"  onchange="storeTotalQuestion(this.value)" >
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -60,7 +93,7 @@
 
             <div class="text-center">
                 <a href="gam.html">
-                    <button class="btn btn-primary" onclick="store();">Get Started!</button>
+                    <button  style="background-color: #377375;"    class="btn btn-primary" onclick="storeName();">Get Started!</button>
                 </a>
             </div>
         </div>

@@ -3,7 +3,7 @@ body {
   }
   
   .card {
-    max-width: 600px;
+    max-width: 1000px;
     margin: auto;
     box-shadow: 0 10px 20px rgba(18, 38, 63, 0.1);
     border: none;
@@ -97,4 +97,12 @@ img[usemap] {
 }
 img[usemap]:hover {
   border-color: #007bff;
+}
+#globe{
+  width: 20%;
+  margin-top: -50px;
+  margin-left: 350px;
+}
+.text-center button{
+  margin-top: -300px;
 }

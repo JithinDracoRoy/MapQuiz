@@ -33,7 +33,7 @@ const answers = [["Australia","Africa","Asia","South America","Australia",
                 ["South America","Africa","Asia","South America","Australia",
                 "Africa","Africa","Europe","Australia","Asia"],
                 ["Asia","Europe","North America","South America","Africa",
-                "South America","Asia","Asia","Asia","Australia."]];
+                "South America","Asia","Asia","Asia","Australia"]];
 
 var noOfQsAsked=0;
 var score=0
@@ -67,8 +67,16 @@ function askQuestion(){
     }
     usedQuestionNumbers.push(randomnumber);
     document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber];
+    const timerImg=document.createElement("img");
+    timerImg.src="assets/countdown.gif";
+    timerImg.style.width='10%';
+    document.getElementById("for_img").appendChild(timerImg);
+    setTimeout(timeOut,9000); 
 }
 function check(answer){
+    clearTimeout(timeOut);
+    const removing=document.getElementById("for_img");
+    removing.removeChild(removing.firstChild);
     noOfQuestions=localStorage.getItem("totalQuestions");
     hardness=parseInt(localStorage.getItem("difficulty"));
     if(answer==answers[hardness][randomnumber]){
@@ -85,14 +93,34 @@ function check(answer){
         result();
     }
 }
-function result(){
-    noOfQuestions=localStorage.getItem("totalQuestions");
-    userName=localStorage.getItem("name");
-    document.getElementById("nextQuestion").style.pointerEvents = 'none';
-    if((score/noOfQuestions)>0.5){
-        document.getElementById("congrats").innerHTML="Congrats "+userName+" You scored above 50%";
-    }
-    else{
-        document.getElementById("opps").innerHTML="Opps "+userName+" You scored below 50%";
-    }
+let result=()=>{
+    document.getElementById("questionDiv").style.display="none";
+    document.getElementById("map").style.display="none";
+    document.getElementById("nextQuestion").style.display="none";
+    userName = localStorage.getItem("name");
+    noOfQuestions = localStorage.getItem("totalQuestions");
+    finalScore = (score/noOfQuestions)*100;
+   if( finalScore < 50 ){
+      document.getElementById("oops").innerHTML = userName + ", you have scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;       
+   }
+   else if(finalScore < 70){
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" + "GOOD JOB";       
+   }
+   else if(finalScore < 80 ){
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" +"GREAT JOB" ;    
+   }
+   else if( finalScore < 95 ){
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + " %.\n" + "EXCELLENT JOB";    
+   }
+   else if( finalScore <= 100 ){
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" + "AMAZING JOB";    
+   }
+} 
+let timeOut=()=>{
+    const removing=document.getElementById("for_img");
+    removing.removeChild(removing.firstChild);
+    document.getElementById("wrong").innerHTML="Timeout! Please go the next question.";
+    document.getElementById("nextQuestion").style.pointerEvents = 'auto';
+    document.getElementById("map").style.pointerEvents = 'none';
+    document.getElementById("for_img").removeChild;
 }

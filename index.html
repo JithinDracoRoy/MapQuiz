@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <div class="card">
             <div class="card-header text-center">
                 Welcome to the World Map Game!
@@ -24,7 +24,7 @@
                 <h5 class="card-title">Instructions</h5>
                 <div class="row" >
                 <ul class="list-group list-group-flush mb-4 col">
-                    <li class="list-group-item">Enter Your Name Bellow</li>
+                    <li class="list-group-item">Enter Your Name Below (Optional)</li>
                     <li class="list-group-item">Enter The Number Of Questions You Would Like To Answer</li>
                     <li class="list-group-item">For Answering, Click On The Continent You Think Is The Answer</li>
                     <li class="list-group-item">At The End Of The Quiz, You Will Get Your Result Percentage</li>
@@ -41,13 +41,21 @@
                     <div class="container my-5">
                         <form>
                             <div class="mb-3">
-                                <label for="firstName" class="form-label">First name:</label>
+                                <label for="firstName" class="form-label">First name :</label>
                                 <input type="text" id="firstName" placeholder="Enter first name">
                             </div>
                             <div class="mb-3">
-                                <label for="number" class="form-label">Questions:</label>
+                                <label for="hardness" class="form-label">Difficulty :</label>
+                                <select id="hardness" onchange="storeDifficulty(this.value)" >
+                                    <option value="0" selected="selected">Easy</option>
+                                    <option value="1">Medium</option>
+                                    <option value="2">Hard</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label">Questions :</label>
                                 <select id="number" onchange="storeTotalQuestion(this.value)" >
-                                    <option value="1">1</option>
+                                    <option value="1" selected="selected">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>

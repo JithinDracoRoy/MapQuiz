@@ -1,4 +1,4 @@
-const questions = [[" Which continent is known as the 'land Down Under'?", 
+const questions = [[" Which continent is known as the 'land Down Under'?",
                 "In which continent is the Sahara Desert located?",
                 "What is the largest continent by land area?",
                 "Where is the Amazon Rainforest located?",
@@ -34,9 +34,9 @@ const answers = [["Australia","Africa","Asia","South America","Australia",
                 "Africa","Africa","Europe","Australia","Asia"],
                 ["Asia","Europe","North America","South America","Africa",
                 "South America","Asia","Asia","Asia","Australia"]];
-
+ 
 //all data for game above
-
+ 
 var noOfQsAsked=0;
 var score=0
 var userName;
@@ -45,7 +45,7 @@ let noOfQuestions=1;
 let randomnumber;
 let usedQuestionNumbers=[];
 let timerCount  //for timeout feat
-
+ 
 const storeName=()=>{
     localStorage.setItem("name",document.getElementById("firstName").value);
     checking(document.getElementById("firtName").value);
@@ -75,10 +75,10 @@ const askQuestion= ()=>{
     timerImg.src="assets/countdown.gif";
     timerImg.style.width='5%';
     document.getElementById("for_img").appendChild(timerImg);
-    timerCount = setTimeout(timeOut,9000); 
+    timerCount = setTimeout(timeOut,9000);
 }
 const check=(answer)=>{
-    
+   
     //Clear timer to stop timer
     clearTimeout(timerCount);
     const removing=document.getElementById("for_img");
@@ -92,7 +92,7 @@ const check=(answer)=>{
     else{
         document.getElementById("wrong").innerHTML="Wrong Answer";
     }
-
+ 
     //Check for End of Game
     noOfQsAsked++;
     if(noOfQuestions==noOfQsAsked){
@@ -102,7 +102,7 @@ const check=(answer)=>{
         document.getElementById("map").style.pointerEvents = 'none';
         document.getElementById("nextQuestion").style.pointerEvents = 'auto';  
     }
-
+ 
 }
 const result=()=>{
     document.getElementById("questionDiv").style.display="none";
@@ -112,13 +112,14 @@ const result=()=>{
     noOfQuestions = localStorage.getItem("totalQuestions");
     document.getElementById("reset").style.display="";
     finalScore = Math.round((score/noOfQuestions)*100) ;
-
+ 
    //Comments for result
    if( finalScore < 50 ){
-      document.getElementById("oops").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;       
+      document.getElementById("oops").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;
+      document.getElementById("imgoops").style.display="";
    }
    else if(finalScore < 70){
-       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "GOOD JOB";       
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "GOOD JOB";      
    }
    else if(finalScore < 80 ){
        document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"GREAT JOB" ;    
@@ -129,8 +130,9 @@ const result=()=>{
    else if( finalScore <= 100 ){
        document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "AMAZING JOB";    
    }
-} 
+}
 const timeOut=()=>{
-
+ 
     check("wrong answer");
-} 
+}
+ 

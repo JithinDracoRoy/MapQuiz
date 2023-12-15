@@ -1,5 +1,4 @@
 body {
-
     background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
   }
  
@@ -10,13 +9,6 @@ body {
     margin-top: 50px;
     box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
     border: none;
-
-  }
-  
-  .card {
-    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
-    border: none;
-    margin-top: 20px;
   }
   
   .card-title {
@@ -25,9 +17,7 @@ body {
   }
   
   .card-text {
-
     font-size: 2.00rem;
-
   }
   
   .map-container {
@@ -46,10 +36,8 @@ body {
   .btn-primary:hover {
     background-color: #0056b3;
     border-color: #004085;
-
     transition: all 0.3s ease;
     transform: scale(2.1);
-
   }
   
 
@@ -143,4 +131,17 @@ img[usemap] {
 
 img[usemap]:hover {
   border-color: #007bff;
+}
+
+#firework-center{
+  justify-content: center;
+  margin-left: 500px;
+  margin-top: 50px;
+  width: 100px;
+  transition: width 2s, height 2s, transform 2s;
+}
+#firework-center:hover {
+  width: 200px;
+  height: 200px;
+  transform: rotate(360deg);
 }

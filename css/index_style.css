@@ -1,6 +1,6 @@
 body {
-
-    background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
+    background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
+    height: 700px;
   }
   .card-body{
     background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);

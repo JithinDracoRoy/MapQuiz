@@ -45,10 +45,23 @@ let noOfQuestions=1;
 let randomnumber;
 let usedQuestionNumbers=[];
 let timerCount  //for timeout feat
- 
+
+const checkName=()=>{
+    if(document.getElementById('firstName').value != '')
+    {
+        document.getElementById('start').hidden = false;
+    }
+    else
+    {
+        document.getElementById('start').hidden = true;
+    }
+}
+
 const storeName=()=>{
     localStorage.setItem("name",document.getElementById("firstName").value);
-    checking(document.getElementById("firtName").value);
+    localStorage.setItem("totalQuestions",document.getElementById("number").value);
+    localStorage.setItem("difficulty",document.getElementById("hardness").value);
+
 }
 const storeTotalQuestion=(a)=>{
     localStorage.setItem("totalQuestions",a);
@@ -75,10 +88,9 @@ const askQuestion= ()=>{
     timerImg.src="assets/countdown.gif";
     timerImg.style.width='5%';
     document.getElementById("for_img").appendChild(timerImg);
-    timerCount = setTimeout(timeOut,9000);
+    timerCount = setTimeout(timeOut,9000); 
 }
 const check=(answer)=>{
-   
     //Clear timer to stop timer
     clearTimeout(timerCount);
     const removing=document.getElementById("for_img");
@@ -92,7 +104,6 @@ const check=(answer)=>{
     else{
         document.getElementById("wrong").innerHTML="Wrong Answer";
     }
- 
     //Check for End of Game
     noOfQsAsked++;
     if(noOfQuestions==noOfQsAsked){
@@ -102,7 +113,6 @@ const check=(answer)=>{
         document.getElementById("map").style.pointerEvents = 'none';
         document.getElementById("nextQuestion").style.pointerEvents = 'auto';  
     }
- 
 }
 const result=()=>{
     document.getElementById("questionDiv").style.display="none";
@@ -112,27 +122,30 @@ const result=()=>{
     noOfQuestions = localStorage.getItem("totalQuestions");
     document.getElementById("reset").style.display="";
     finalScore = Math.round((score/noOfQuestions)*100) ;
- 
+
    //Comments for result
    if( finalScore < 50 ){
-      document.getElementById("oops").innerHTML = userName + ", You Have Scored " + finalScore + "%. BETTER LUCK NEXT TIME" ;
-      document.getElementById("imgoops").style.display="";
+      document.getElementById("oops").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;
+     document.getElementById("imgoops").style.display="";
    }
    else if(finalScore < 70){
-       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore +"%. GOOD JOB";      
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "GOOD JOB";       
    }
    else if(finalScore < 80 ){
-       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%. GREAT JOB" ;    
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"GREAT JOB" ;    
    }
    else if( finalScore < 95 ){
-       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%. EXCELLENT JOB";    
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + " %.\n" + "EXCELLENT JOB";    
    }
    else if( finalScore <= 100 ){
-       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%. AMAZING JOB";    
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "AMAZING JOB";    
    }
-}
+   if(finalScore>50)
+   {
+    document.body.style.backgroundImage='url("assets/GIF-FIREWORKS.gif")';
+   }
+} 
 const timeOut=()=>{
- 
+
     check("wrong answer");
-}
- 
+} 

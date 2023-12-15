@@ -12,7 +12,19 @@
 
     <title>World Map Game</title>
     <script src="game.js"></script>
-
+    <style>
+    ul li{
+        list-style-type: none;
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+    }
+    ul li:hover {
+        transform: scale(1.1);
+        }
+    </style>
 </head>
 <style>
     @keyframes changeColor {
@@ -62,6 +74,7 @@
 
                 <h5 style="color: #ddefe3;"    class="card-title">Instructions</h5>
                 <div class="row" >
+
                 <ul   class="list-group list-group-flush mb-4 col">
                     <li   style="background-color: #377375; color: white;" class="list-group-item"><b>Please Enter Name Before Starting</b></li>
                     <li  style="background-color: #377375; color: white;" class="list-group-item"><b>Enter the number of questions you would like to answer</b></li>
@@ -80,13 +93,14 @@
                         <form style="color: white;">
                             <div class="mb-2">
                                 <label for="firstName" class="form-label">First name :</label>
-                                <input type="text" id="firstName" placeholder="Enter first name">
+                                <input type="text" id="firstName" placeholder="Enter first name" oninput="checkName()">
                             </div>
                             <div class="mb-2">
 
                                 <label for="hardness" class="form-label">Difficulty &nbsp;&nbsp;:</label>
                                 <select id="hardness" onchange="storeDifficulty(this.value)" >
-                                    <option value="0" selected="selected">Easy</option>
+                                    <option value="0" selected>Easy</option>
+
                                     <option value="1">Medium</option>
                                     <option value="2">Hard</option>
                                 </select>
@@ -94,7 +108,8 @@
                             <div class="mb-2">
                                 <label for="number" class="form-label">Questions :</label>
                                 <select id="number" onchange="storeTotalQuestion(this.value)" >
-                                    <option value="1" selected="selected">1</option>
+
+                                    <option value="1" selected>1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -116,7 +131,8 @@
 
             <div class="text-center">
                 <a href="gam.html">
-                    <button id="starting" style="background-color: #377375;"    class="btn btn-primary" onclick="storeName();">Get Started!</button>
+
+                    <button class="btn btn-primary" id="start" onclick="storeName();" hidden>Get Started!</button>
 
                 </a>
             </div>

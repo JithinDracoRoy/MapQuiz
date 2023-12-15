@@ -42,7 +42,7 @@ var score=0
 var userName;
 var hardness;
 let noOfQuestions=1;
-let randomnumber;
+let randomNumber;
 let usedQuestionNumbers=[];
 let timerCount  //for timeout feat
 
@@ -55,75 +55,90 @@ const checkName=()=>{
     }
 }
 
-const storeName=()=>{
+const storeValues=()=>{
+
     localStorage.setItem("name",document.getElementById("firstName").value);
     localStorage.setItem("totalQuestions",document.getElementById("number").value);
     localStorage.setItem("difficulty",document.getElementById("hardness").value);
+
 }
 
 const askQuestion= ()=>{
+
     document.getElementById("correct").innerHTML="";
     document.getElementById("wrong").innerHTML="";
-    hardness=parseInt(localStorage.getItem("difficulty"));
     document.getElementById("map").style.pointerEvents = 'auto';
     document.getElementById("nextQuestion").style.pointerEvents = 'none';
-    randomnumber=Math.floor(Math.random()*10);
+
+    hardness=parseInt(localStorage.getItem("difficulty"));
+    randomNumber=Math.floor(Math.random()*10);
     for(i=0;i<noOfQsAsked;i++){//to ensure no repeats
-        if(usedQuestionNumbers[i]==randomnumber){
+        if(usedQuestionNumbers[i]==randomNumber){
             i=0;
-            randomnumber=Math.floor(Math.random()*10);
+            randomNumber=Math.floor(Math.random()*10);
         }
     }
-    usedQuestionNumbers.push(randomnumber);
-    document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber];
-    const timerImg=document.createElement("img");//creating coundown
+    usedQuestionNumbers.push(randomNumber);
+
+    document.getElementById("questionDiv").innerHTML=questions[hardness][randomNumber];
+
+    const timerImg=document.createElement("img");//creating countdown
     timerImg.src="assets/countdown.gif";
     timerImg.style.width='5%';
     document.getElementById("for_img").appendChild(timerImg);
     timerCount = setTimeout(timeOut,9000); 
+
 }
+
 const check=(answer)=>{
-    //Clear timer to stop timer
-    clearTimeout(timerCount);
+    
+    clearTimeout(timerCount);//Clear timer to stop timer
+
     const removing=document.getElementById("for_img");
     removing.removeChild(removing.firstChild);
+
     noOfQuestions=localStorage.getItem("totalQuestions");
     hardness=parseInt(localStorage.getItem("difficulty"));
-    if(answer==answers[hardness][randomnumber]){
+
+    if(answer==answers[hardness][randomNumber]){
         score++;
         document.getElementById("correct").innerHTML="Correct Answer";
-        let mySound = new Audio('assets/cheer');
+        let mySound = new Audio('assets/cheer.mp3');//adding audio
         mySound.play();
     }
     else{
         document.getElementById("wrong").innerHTML="Wrong Answer";
-        let mySound = new Audio('assets/buzz');
+        let mySound = new Audio('assets/buzz.mp3');
         mySound.play();
     }
-    //Check for End of Game
+    
     noOfQsAsked++;
-    if(noOfQuestions==noOfQsAsked){
+
+    if(noOfQuestions==noOfQsAsked){//Check for End of Game
         result();
     }
     else{
         document.getElementById("map").style.pointerEvents = 'none';
         document.getElementById("nextQuestion").style.pointerEvents = 'auto';  
     }
+
 }
+
 const result=()=>{
+
     document.getElementById("questionDiv").style.display="none";
     document.getElementById("map").style.display="none";
     document.getElementById("nextQuestion").style.display="none";
+    document.getElementById("reset").style.display="";
+
     userName = localStorage.getItem("name");
     noOfQuestions = localStorage.getItem("totalQuestions");
-    document.getElementById("reset").style.display="";
     finalScore = Math.round((score/noOfQuestions)*100) ;
 
    //Comments for result
    if( finalScore < 50 ){
-
-      document.getElementById("oops").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;
-     document.getElementById("imgoops").style.display="";
+        document.getElementById("oops").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;
+        document.getElementById("imgoops").style.display="";
    }
    else if(finalScore < 70){
        document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" + "GOOD JOB";       
@@ -136,14 +151,13 @@ const result=()=>{
    }
    else if( finalScore <= 100 ){
        document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" + "AMAZING JOB";    
+   }
+   if(finalScore>50){
+        document.body.style.backgroundImage='url("assets/GIF-FIREWORKS.gif")';
+   }
 
-   }
-   if(finalScore>50)
-   {
-    document.body.style.backgroundImage='url("assets/GIF-FIREWORKS.gif")';
-   }
 } 
-const timeOut=()=>{
 
+const timeOut=()=>{
     check("wrong answer");
 } 

@@ -133,6 +133,37 @@ img[usemap] {
 img[usemap]:hover {
   border-color: #007bff;
 }
+.globe {
+  position: fixed;
+  width: 50px; /* Adjust the size of the globe */
+  height: auto;
+  z-index: 999;
+  animation: globeAnimation 8s infinite linear;
+}
+
+/* Define the animation keyframes */
+@keyframes globeAnimation {
+  0% {
+      top: -50px;
+      left: 50%;
+  }
+  25% {
+      top: 50%;
+      left: -50px;
+  }
+  50% {
+      top: 100%;
+      left: 50%;
+  }
+  75% {
+      top: 50%;
+      left: 100%;
+  }
+  100% {
+      top: -50px;
+      left: 50%;
+  }
+}
 
 /* <<<<<<< Thimna
 #firework-center{
@@ -147,6 +178,3 @@ img[usemap]:hover {
   height: 200px;
   transform: rotate(360deg);
 } */
-.footer{
-  background-color: #663399;
-}

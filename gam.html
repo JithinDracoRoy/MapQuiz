@@ -2,46 +2,16 @@
 <html>
 
 <head>
+
     <link rel="stylesheet" href="./css/map_style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="game.js"></script>
-<style>
-        .globe {
-            position: fixed;
-            width: 50px; /* Adjust the size of the globe */
-            height: auto;
-            z-index: 999;
-            animation: globeAnimation 8s infinite linear;
-        }
+    <script src="game.js"></script>
 
-        /* Define the animation keyframes */
-        @keyframes globeAnimation {
-            0% {
-                top: -50px;
-                left: 50%;
-            }
-            25% {
-                top: 50%;
-                left: -50px;
-            }
-            50% {
-                top: 100%;
-                left: 50%;
-            }
-            75% {
-                top: 50%;
-                left: 100%;
-            }
-            100% {
-                top: -50px;
-                left: 50%;
-            }
-        }
-    </style>
 </head>
 
 <body onload="askQuestion();" style="height: 750px; background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);">
+    
     <img style="width: 10%;" class="globe" src="assets/Rotating_globe.gif" alt="Globe">
     <audio id="myAudio" controls autoplay loop>
         <source src="./assets/Line Noise - Magenta Moon (Part II).mp3" type="audio/mp3">
@@ -90,15 +60,10 @@
                          <img id="imgoops" src="assets/oops.gif" style="display: none;width: 80px;">
                         <p class="card-text text-success mb-4" id="result"><strong></strong></p>
                         <p class="card-text text-danger mb-4" id="oops"><strong></strong></p>
-                        <a href="index.html"><button class="btn btn-primary" id="reset" style="display: none;">Start Again?</button></a>
-                       
-
+                        <a href="index.html"><button class="btn btn-primary" id="reset" style="display: none;">Start Again?</button></a>  
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-
         </div>
     </div>
 </body>

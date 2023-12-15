@@ -2,6 +2,40 @@ body {
     background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
     height: 700px;
   }
+  @keyframes changeColor {
+    0% {
+        color: #2a484e;
+    }
+    25% {
+        color:#A8D8CD;
+    }
+    50% {
+        color: #2a484e;
+    }
+    75% {
+        color:#377375;
+    }
+    100% {
+        color: #2a484e;
+    }
+}
+
+h1 {
+    font-size: 60px;
+    animation: changeColor 4s ease-in-out infinite;
+}
+
+ul li{
+    list-style-type: none;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+ul li:hover {
+    transform: scale(1.1);
+}
   .card-body{
     background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
     height: 500px;

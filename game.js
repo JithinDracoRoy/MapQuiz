@@ -100,7 +100,6 @@ function check(answer){
         document.getElementById("nextQuestion").style.pointerEvents = 'auto';  
     }
 
-
 }
 let result=()=>{
     document.getElementById("questionDiv").style.display="none";
@@ -137,4 +136,4 @@ let timeOut=()=>{
     // document.getElementById("map").style.pointerEvents = 'none';
     check("wrong answer");
     // document.getElementById("for_img").removeChild;
-}
+} 

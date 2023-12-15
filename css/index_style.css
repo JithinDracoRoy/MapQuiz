@@ -55,6 +55,7 @@ background: linear-gradient(to bottom, #2a484e,#377375,#A8D8CD,#ddefe3);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   }
 
   /* Style for the select tag */

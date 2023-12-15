@@ -125,20 +125,20 @@ const result=()=>{
 
    //Comments for result
    if( finalScore < 50 ){
-      document.getElementById("oops").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;
-     document.getElementById("imgoops").style.display="";
+      document.getElementById("oops").innerHTML = userName + ", you have scored " + finalScore + "%. " +"BETTER LUCK NEXT TIME" ;
+      document.getElementById("imgoops").style.display="";
    }
    else if(finalScore < 70){
-       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "GOOD JOB";       
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%. " + "GOOD JOB";       
    }
    else if(finalScore < 80 ){
-       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"GREAT JOB" ;    
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%. " +"GREAT JOB" ;    
    }
    else if( finalScore < 95 ){
-       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + " %.\n" + "EXCELLENT JOB";    
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + " %. " + "EXCELLENT JOB";    
    }
    else if( finalScore <= 100 ){
-       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "AMAZING JOB";    
+       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%. " + "AMAZING JOB";    
    }
    if(finalScore>50)
    {

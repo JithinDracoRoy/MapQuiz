@@ -47,12 +47,10 @@ let usedQuestionNumbers=[];
 let timerCount  //for timeout feat
 
 const checkName=()=>{
-    if(document.getElementById('firstName').value != '')
-    {
+    if(document.getElementById('firstName').value != ''){
         document.getElementById('start').hidden = false;
     }
-    else
-    {
+    else{
         document.getElementById('start').hidden = true;
     }
 }
@@ -61,14 +59,8 @@ const storeName=()=>{
     localStorage.setItem("name",document.getElementById("firstName").value);
     localStorage.setItem("totalQuestions",document.getElementById("number").value);
     localStorage.setItem("difficulty",document.getElementById("hardness").value);
+}
 
-}
-const storeTotalQuestion=(a)=>{
-    localStorage.setItem("totalQuestions",a);
-}
-const storeDifficulty=(a)=>{
-    localStorage.setItem("difficulty",a);
-}
 const askQuestion= ()=>{
     document.getElementById("correct").innerHTML="";
     document.getElementById("wrong").innerHTML="";
@@ -100,10 +92,13 @@ const check=(answer)=>{
     if(answer==answers[hardness][randomnumber]){
         score++;
         document.getElementById("correct").innerHTML="Correct Answer";
-        <audio id="correctAnswerAudio" src="./assets"></audio>
+        let mySound = new Audio('assets/cheer');
+        mySound.play();
     }
     else{
         document.getElementById("wrong").innerHTML="Wrong Answer";
+        let mySound = new Audio('assets/buzz');
+        mySound.play();
     }
     //Check for End of Game
     noOfQsAsked++;

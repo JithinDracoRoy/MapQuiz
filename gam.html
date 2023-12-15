@@ -43,16 +43,24 @@
         </style>
 </head>
 
+
+
+
 <body onload="askQuestion();" style="height: 750px; background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);">
     <img style="width: 10%;" class="globe" src="assets/Rotating_globe.gif" alt="Globe">
     <audio id="myAudio" controls autoplay loop>
         <source src="./assets/Line Noise - Magenta Moon (Part II).mp3" type="audio/mp3">
     </audio>
+
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card text-center" style="margin-top: 50px;">
                     <div class="card-body" style="background-color: #edf1f6;">
                         <h2 class="card-title mb-4"></h2>
+
+                        <h2 class="quest mb-4" id="questionDiv"></h2>
+                    
+                       
                         <h2 class="quest mb-4" id="questionDiv" style="color: #081f5c; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"></h2>
                         <div id="for_img"></div>
                         <p class="card-text text-success mb-4" id="correct" ><strong></strong></p>
@@ -89,9 +97,16 @@
                             </map>
                         </div>
                         <a id="nextQuestion" class="btn btn-primary button-div" onclick="askQuestion();">Next Question</a>
+                        
+
+                            
+                        
+
                         <p class="card-text text-success mb-4" id="result"><strong></strong></p>
 
                         <p class="card-text text-danger mb-4" id="oops"><strong></strong></p>
+                      <img id="oops" src="/assets/oops.gif" style="display: none;width: 80px;">
+
 
                     </div>
                 </div>

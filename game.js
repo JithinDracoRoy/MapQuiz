@@ -126,6 +126,7 @@ const result=()=>{
 
    //Comments for result
    if( finalScore < 50 ){
+
       document.getElementById("oops").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;
      document.getElementById("imgoops").style.display="";
    }
@@ -140,6 +141,7 @@ const result=()=>{
    }
    else if( finalScore <= 100 ){
        document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" + "AMAZING JOB";    
+
    }
    if(finalScore>50)
    {

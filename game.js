@@ -35,32 +35,35 @@ const answers = [["Australia","Africa","Asia","South America","Australia",
                 ["Asia","Europe","North America","South America","Africa",
                 "South America","Asia","Asia","Asia","Australia"]];
 
+//all data for game above
+
 var noOfQsAsked=0;
 var score=0
 var userName;
 var hardness;
-var noOfQuestions=1;
-var randomnumber;
-var usedQuestionNumbers=[];
+let noOfQuestions=1;
+let randomnumber;
+let usedQuestionNumbers=[];
 let timerCount  //for timeout feat
 
-function storeName(){
+const storeName=()=>{
     localStorage.setItem("name",document.getElementById("firstName").value);
+    checking(document.getElementById("firtName").value);
 }
-function storeTotalQuestion(a){
+const storeTotalQuestion=(a)=>{
     localStorage.setItem("totalQuestions",a);
 }
-function storeDifficulty(a){
+const storeDifficulty=(a)=>{
     localStorage.setItem("difficulty",a);
 }
-function askQuestion(){
+const askQuestion= ()=>{
     document.getElementById("correct").innerHTML="";
     document.getElementById("wrong").innerHTML="";
     hardness=parseInt(localStorage.getItem("difficulty"));
     document.getElementById("map").style.pointerEvents = 'auto';
     document.getElementById("nextQuestion").style.pointerEvents = 'none';
     randomnumber=Math.floor(Math.random()*10);
-    for(i=0;i<noOfQsAsked;i++){
+    for(i=0;i<noOfQsAsked;i++){//to ensure no repeats
         if(usedQuestionNumbers[i]==randomnumber){
             i=0;
             randomnumber=Math.floor(Math.random()*10);
@@ -68,13 +71,13 @@ function askQuestion(){
     }
     usedQuestionNumbers.push(randomnumber);
     document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber];
-    const timerImg=document.createElement("img");
+    const timerImg=document.createElement("img");//creating coundown
     timerImg.src="assets/countdown.gif";
-    timerImg.style.width='10%';
+    timerImg.style.width='5%';
     document.getElementById("for_img").appendChild(timerImg);
     timerCount = setTimeout(timeOut,9000); 
 }
-function check(answer){
+const check=(answer)=>{
     
     //Clear timer to stop timer
     clearTimeout(timerCount);
@@ -101,39 +104,33 @@ function check(answer){
     }
 
 }
-let result=()=>{
+const result=()=>{
     document.getElementById("questionDiv").style.display="none";
     document.getElementById("map").style.display="none";
     document.getElementById("nextQuestion").style.display="none";
     userName = localStorage.getItem("name");
     noOfQuestions = localStorage.getItem("totalQuestions");
-    finalScore =Math.round((score/noOfQuestions)*100) ;
+    document.getElementById("reset").style.display="";
+    finalScore = Math.round((score/noOfQuestions)*100) ;
 
    //Comments for result
    if( finalScore < 50 ){
-      document.getElementById("oops").innerHTML = userName + ", you have scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;       
+      document.getElementById("oops").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;       
    }
    else if(finalScore < 70){
-       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" + "GOOD JOB";       
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "GOOD JOB";       
    }
    else if(finalScore < 80 ){
-       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" +"GREAT JOB" ;    
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" +"GREAT JOB" ;    
    }
    else if( finalScore < 95 ){
-       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + " %.\n" + "EXCELLENT JOB";    
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + " %.\n" + "EXCELLENT JOB";    
    }
    else if( finalScore <= 100 ){
-       document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" + "AMAZING JOB";    
+       document.getElementById("result").innerHTML = userName + "You Have Scored " + finalScore + "%.\n" + "AMAZING JOB";    
    }
-
 } 
-let timeOut=()=>{
+const timeOut=()=>{
 
-    // const removing=document.getElementById("for_img");
-    // removing.removeChild(removing.firstChild);
-    // document.getElementById("wrong").innerHTML="Timeout! Please go the next question.";
-    // document.getElementById("nextQuestion").style.pointerEvents = 'auto';
-    // document.getElementById("map").style.pointerEvents = 'none';
     check("wrong answer");
-    // document.getElementById("for_img").removeChild;
 } 

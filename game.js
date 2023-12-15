@@ -1,4 +1,3 @@
-
 const questions = [[" Which continent is known as the 'land Down Under'?", 
                 "In which continent is the Sahara Desert located?",
                 "What is the largest continent by land area?",
@@ -8,7 +7,6 @@ const questions = [[" Which continent is known as the 'land Down Under'?",
                 "On which continent can you find France?",
                 "Which is the Second biggest continent of the world?",
                 "Columbus found which continent?",
-
                 "Where is Amazon River?"],
                 ["In which continent is the Amazon Rainforest located?",
                 "Where is the Sahara Desert situated?",
@@ -37,13 +35,10 @@ const answers = [["Australia","Africa","Asia","South America","Australia",
                 ["Asia","Europe","North America","South America","Africa",
                 "South America","Asia","Asia","Asia","Australia"]];
 
-
 var noOfQsAsked=0;
 var score=0
 var userName;
-
 var hardness;
-
 var noOfQuestions=1;
 var randomnumber;
 var usedQuestionNumbers=[];
@@ -62,7 +57,6 @@ function askQuestion(){
     document.getElementById("correct").innerHTML="";
     document.getElementById("wrong").innerHTML="";
     hardness=parseInt(localStorage.getItem("difficulty"));
-
     document.getElementById("map").style.pointerEvents = 'auto';
     document.getElementById("nextQuestion").style.pointerEvents = 'none';
     randomnumber=Math.floor(Math.random()*10);
@@ -73,7 +67,6 @@ function askQuestion(){
         }
     }
     usedQuestionNumbers.push(randomnumber);
-
     document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber];
     const timerImg=document.createElement("img");
     timerImg.src="assets/countdown.gif";
@@ -90,7 +83,6 @@ function check(answer){
     noOfQuestions=localStorage.getItem("totalQuestions");
     hardness=parseInt(localStorage.getItem("difficulty"));
     if(answer==answers[hardness][randomnumber]){
-
         score++;
         document.getElementById("correct").innerHTML="Correct Answer";
     }
@@ -104,7 +96,6 @@ function check(answer){
         result();
     }
     else{
-
         document.getElementById("map").style.pointerEvents = 'none';
         document.getElementById("nextQuestion").style.pointerEvents = 'auto';  
     }

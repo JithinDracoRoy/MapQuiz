@@ -12,6 +12,19 @@
 
     <title>World Map Game</title>
     <script src="game.js"></script>
+    <style>
+         ul li{
+        list-style-type: none;
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+    }
+    ul li:hover {
+        transform: scale(1.1);
+        }
+    </style>
 </head>
 
 <body>
@@ -47,7 +60,7 @@
                             <div class="mb-3">
                                 <label for="hardness" class="form-label">Difficulty :</label>
                                 <select id="hardness" onchange="storeDifficulty(this.value)" >
-                                    <option value="0">Easy</option>
+                                    <option value="0" selected="selected">Easy</option>
                                     <option value="1">Medium</option>
                                     <option value="2">Hard</option>
                                 </select>
@@ -55,7 +68,7 @@
                             <div class="mb-3">
                                 <label for="number" class="form-label">Questions :</label>
                                 <select id="number" onchange="storeTotalQuestion(this.value)" >
-                                    <option value="1">1</option>
+                                    <option value="1" selected="selected">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>

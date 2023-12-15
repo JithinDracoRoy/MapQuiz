@@ -1,11 +1,8 @@
 body {
-
     background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
   }
   .card-body{
-
-    background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
-    height: 700px;
+background: linear-gradient(to bottom, #2a484e,#377375,#A8D8CD,#ddefe3);
   }
 
   .card {
@@ -27,9 +24,7 @@ body {
   
   .card-title {
     font-weight: bold;
-
     color: white;
-    
     font-size: 2rem;
   }
   
@@ -107,7 +102,6 @@ img[usemap] {
 img[usemap]:hover {
   border-color: #007bff;
 }
-
 .text-center{
   background-color:#ddefe3;
 }
@@ -122,12 +116,4 @@ img[usemap]:hover {
 /* Define the zoomed-in state of the element */
 .prompt-box:hover {
   transform: scale(1.2);
-#globe{
-  width: 20%;
-  margin-top: -50px;
-  margin-left: 350px;
-}
-.text-center button{
-  margin-top: -300px;
-
 }

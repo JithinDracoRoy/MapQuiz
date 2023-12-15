@@ -42,6 +42,7 @@ var hardness;
 var noOfQuestions=1;
 var randomnumber;
 var usedQuestionNumbers=[];
+let timerCount  //for timeout feat
 
 function storeName(){
     localStorage.setItem("name",document.getElementById("firstName").value);
@@ -71,10 +72,12 @@ function askQuestion(){
     timerImg.src="assets/countdown.gif";
     timerImg.style.width='10%';
     document.getElementById("for_img").appendChild(timerImg);
-    setTimeout(timeOut,9000); 
+    timerCount = setTimeout(timeOut,9000); 
 }
 function check(answer){
-    clearTimeout(timeOut);
+    
+    //Clear timer to stop timer
+    clearTimeout(timerCount);
     const removing=document.getElementById("for_img");
     removing.removeChild(removing.firstChild);
     noOfQuestions=localStorage.getItem("totalQuestions");
@@ -86,12 +89,17 @@ function check(answer){
     else{
         document.getElementById("wrong").innerHTML="Wrong Answer";
     }
+
+    //Check for End of Game
     noOfQsAsked++;
-    document.getElementById("map").style.pointerEvents = 'none';
-    document.getElementById("nextQuestion").style.pointerEvents = 'auto';
     if(noOfQuestions==noOfQsAsked){
         result();
     }
+    else{
+        document.getElementById("map").style.pointerEvents = 'none';
+        document.getElementById("nextQuestion").style.pointerEvents = 'auto';  
+    }
+
 }
 let result=()=>{
     document.getElementById("questionDiv").style.display="none";
@@ -99,7 +107,9 @@ let result=()=>{
     document.getElementById("nextQuestion").style.display="none";
     userName = localStorage.getItem("name");
     noOfQuestions = localStorage.getItem("totalQuestions");
-    finalScore = (score/noOfQuestions)*100;
+    finalScore =Math.round((score/noOfQuestions)*100) ;
+
+   //Comments for result
    if( finalScore < 50 ){
       document.getElementById("oops").innerHTML = userName + ", you have scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;       
    }
@@ -115,12 +125,15 @@ let result=()=>{
    else if( finalScore <= 100 ){
        document.getElementById("result").innerHTML = userName + ", you have scored " + finalScore + "%.\n" + "AMAZING JOB";    
    }
+
 } 
 let timeOut=()=>{
-    const removing=document.getElementById("for_img");
-    removing.removeChild(removing.firstChild);
-    document.getElementById("wrong").innerHTML="Timeout! Please go the next question.";
-    document.getElementById("nextQuestion").style.pointerEvents = 'auto';
-    document.getElementById("map").style.pointerEvents = 'none';
-    document.getElementById("for_img").removeChild;
-}
+
+    // const removing=document.getElementById("for_img");
+    // removing.removeChild(removing.firstChild);
+    // document.getElementById("wrong").innerHTML="Timeout! Please go the next question.";
+    // document.getElementById("nextQuestion").style.pointerEvents = 'auto';
+    // document.getElementById("map").style.pointerEvents = 'none';
+    check("wrong answer");
+    // document.getElementById("for_img").removeChild;
+} 

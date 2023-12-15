@@ -19,6 +19,7 @@ body {
   .card-text {
     font-size: 2.00rem;
   }
+
   
   .map-container {
     padding: 15px;
@@ -133,6 +134,7 @@ img[usemap]:hover {
   border-color: #007bff;
 }
 
+/* <<<<<<< Thimna
 #firework-center{
   justify-content: center;
   margin-left: 500px;
@@ -144,4 +146,7 @@ img[usemap]:hover {
   width: 200px;
   height: 200px;
   transform: rotate(360deg);
+} */
+.footer{
+  background-color: #663399;
 }

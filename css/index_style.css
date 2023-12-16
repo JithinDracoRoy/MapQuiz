@@ -1,9 +1,44 @@
 body {
     background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
     height: 700px;
+  }
+  @keyframes changeColor {
+    0% {
+        color: #2a484e;
+    }
+    25% {
+        color:#A8D8CD;
+    }
+    50% {
+        color: #2a484e;
+    }
+    75% {
+        color:#377375;
+    }
+    100% {
+        color: #2a484e;
+    }
+}
 
-   
+h1 {
+    font-size: 60px;
+    animation: changeColor 4s ease-in-out infinite;
+}
 
+ul li{
+    list-style-type: none;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+ul li:hover {
+    transform: scale(1.1);
+}
+  .card-body{
+    background: linear-gradient(to bottom,#140951,#152069,#244a80,#377a98,#4eadaf,#69c6af,#88deb0);
+    height: 500px;
   }
   
   .card {
@@ -19,13 +54,15 @@ body {
   .card-header {
     background-color: #007bff;
     color: #ffffff;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
   }
   
   .card-title {
     font-weight: bold;
-    color: #663399;
+
+    color: white;
+
     font-size: 2rem;
   }
   
@@ -56,9 +93,7 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-
   }
 
   /* Style for the select tag */
@@ -105,11 +140,35 @@ img[usemap] {
 img[usemap]:hover {
   border-color: #007bff;
 }
+#start{
+  margin-top: -20%;
+}
+.text-center{
+  background-color:#ddefe3;
+  padding-top: -200px;
+}
+.prompt-box {
+  border: 1px solid #ddefe3 ;
+  margin-left: 40px;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+
+/* Define the zoomed-in state of the element */
+.prompt-box:hover {
+  transform: scale(1.2);
+}
+
 #globe{
   width: 20%;
   margin-top: -50px;
   margin-left: 350px;
 }
+#start{
+  margin-top: -100px;
+}
 .text-center button{
   margin-top: -300px;
+
 }

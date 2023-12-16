@@ -1,4 +1,4 @@
-const questions = [[" Which continent is known as the 'land Down Under'?", 
+const questions = [[" Which continent is known as the 'land Down Under'?",
                 "In which continent is the Sahara Desert located?",
                 "What is the largest continent by land area?",
                 "Where is the Amazon Rainforest located?",
@@ -33,70 +33,131 @@ const answers = [["Australia","Africa","Asia","South America","Australia",
                 ["South America","Africa","Asia","South America","Australia",
                 "Africa","Africa","Europe","Australia","Asia"],
                 ["Asia","Europe","North America","South America","Africa",
-                "South America","Asia","Asia","Asia","Australia."]];
-
+                "South America","Asia","Asia","Asia","Australia"]];
+ 
+//all data for game above
+ 
 var noOfQsAsked=0;
 var score=0
 var userName;
 var hardness;
-var noOfQuestions=1;
-var randomnumber;
-var usedQuestionNumbers=[];
+let noOfQuestions=1;
+let randomNumber;
+let usedQuestionNumbers=[];
+let timerCount  //for timeout feat
 
-function storeName(){
+const checkName=()=>{
+    if(document.getElementById('firstName').value != ''){
+        document.getElementById('start').hidden = false;
+    }
+    else{
+        document.getElementById('start').hidden = true;
+    }
+}
+
+const storeValues=()=>{
+
     localStorage.setItem("name",document.getElementById("firstName").value);
-}
-function storeTotalQuestion(a){
-    localStorage.setItem("totalQuestions",a);
-}
-function storeDifficulty(a){
-    localStorage.setItem("difficulty",a);
+    localStorage.setItem("totalQuestions",document.getElementById("number").value);
+    localStorage.setItem("difficulty",document.getElementById("hardness").value);
+
 }
 
-function askQuestion(){                                                 //function to add new question
-    document.getElementById("correct").innerHTML="";                    // Clear the inner HTML content of elements with ids "correct" and "wrong"
-    document.getElementById("wrong").innerHTML="";                      
-    document.getElementById("map").style.pointerEvents = 'auto';        // Enable pointer events for the map and disable for the nextQuestion button
+const askQuestion= ()=>{
+
+    document.getElementById("correct").innerHTML="";
+    document.getElementById("wrong").innerHTML="";
+    document.getElementById("map").style.pointerEvents = 'auto';
     document.getElementById("nextQuestion").style.pointerEvents = 'none';
-    randomnumber=Math.floor(Math.random()*10);                           // Generate a random number between 0 and 9
-    for(i=0;i<noOfQsAsked;i++){                                          // Loop to check if the randomly generated question number has been used before
-        if(usedQuestionNumbers[i]==randomnumber){                        // If the question number is used, reset the loop and generate a new random number
+
+    hardness=parseInt(localStorage.getItem("difficulty"));
+    randomNumber=Math.floor(Math.random()*10);
+    for(i=0;i<noOfQsAsked;i++){//to ensure no repeats
+        if(usedQuestionNumbers[i]==randomNumber){
             i=0;
-            randomnumber=Math.floor(Math.random()*10);
+            randomNumber=Math.floor(Math.random()*10);
         }
     }
+    usedQuestionNumbers.push(randomNumber);
 
-    usedQuestionNumbers.push(randomnumber);                              // Add the newly generated question number to the usedQuestionNumbers array
-    document.getElementById("questionDiv").innerHTML=questions[hardness][randomnumber]; // Set the inner HTML content of the element with id "questionDiv" to the new question
+    document.getElementById("questionDiv").innerHTML=questions[hardness][randomNumber];
+
+    const timerImg=document.createElement("img");//creating countdown
+    timerImg.src="assets/countdown.gif";
+    timerImg.style.width='5%';
+    document.getElementById("for_img").appendChild(timerImg);
+    timerCount = setTimeout(timeOut,9000); 
+
 }
-function check(answer){
+
+const check=(answer)=>{
+    
+    clearTimeout(timerCount);//Clear timer to stop timer
+
+    const removing=document.getElementById("for_img");
+    removing.removeChild(removing.firstChild);
+
     noOfQuestions=localStorage.getItem("totalQuestions");
     hardness=parseInt(localStorage.getItem("difficulty"));
-    if(answer==answers[hardness][randomnumber]){
+
+    if(answer==answers[hardness][randomNumber]){
         score++;
         document.getElementById("correct").innerHTML="Correct Answer";
+        let mySound = new Audio('assets/cheer.mp3');//adding audio
+        mySound.play();
     }
     else{
         document.getElementById("wrong").innerHTML="Wrong Answer";
+        let mySound = new Audio('assets/buzz.mp3');
+        mySound.play();
     }
+    
     noOfQsAsked++;
-    document.getElementById("map").style.pointerEvents = 'none';
-    document.getElementById("nextQuestion").style.pointerEvents = 'auto';
-    if(noOfQuestions==noOfQsAsked){
+
+    if(noOfQuestions==noOfQsAsked){//Check for End of Game
         result();
     }
-}
-function result(){
-    noOfQuestions=localStorage.getItem("totalQuestions");
-    userName=localStorage.getItem("name");
-    document.getElementById("nextQuestion").style.pointerEvents = 'none';
-    if((score/noOfQuestions)>0.5){
-        document.getElementById("congrats").innerHTML="Congrats "+userName+" You scored above 50%";
-    }
     else{
-        document.getElementById("opps").innerHTML="Opps "+userName+" You scored below 50%";
+        document.getElementById("map").style.pointerEvents = 'none';
+        document.getElementById("nextQuestion").style.pointerEvents = 'auto';  
     }
 
 }
 
-}
+const result=()=>{
+
+    document.getElementById("questionDiv").style.display="none";
+    document.getElementById("map").style.display="none";
+    document.getElementById("nextQuestion").style.display="none";
+    document.getElementById("reset").style.display="";
+
+    userName = localStorage.getItem("name");
+    noOfQuestions = localStorage.getItem("totalQuestions");
+    finalScore = Math.round((score/noOfQuestions)*100) ;
+
+   //Comments for result
+   if( finalScore < 50 ){
+        document.getElementById("oops").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" +"BETTER LUCK NEXT TIME" ;
+        document.getElementById("imgoops").style.display="";
+   }
+   else if(finalScore < 70){
+       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" + "GOOD JOB";       
+   }
+   else if(finalScore < 80 ){
+       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" +"GREAT JOB" ;    
+   }
+   else if( finalScore < 95 ){
+       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + " %.\n" + "EXCELLENT JOB";    
+   }
+   else if( finalScore <= 100 ){
+       document.getElementById("result").innerHTML = userName + ", You Have Scored " + finalScore + "%.\n" + "AMAZING JOB";    
+   }
+   if(finalScore>50){
+        document.body.style.backgroundImage='url("assets/GIF-FIREWORKS.gif")';
+   }
+
+} 
+
+const timeOut=()=>{
+    check("wrong answer");
+} 
